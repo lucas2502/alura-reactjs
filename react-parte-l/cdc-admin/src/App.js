@@ -2,16 +2,22 @@ import React, { Component } from 'react';
 import './css/pure-min.css';
 import './css/side-menu.css';
 
+import $ from 'jquery'
+
 class App extends Component {
   constructor() {
     super();
-    this.state = { 
-      lista: [{
-        nome:'lucas',
-        email: 'lucas@teste.com.br',
-        senha: '123456'
-      }]
-    }
+    this.state = {lista: []}
+  }
+
+  componentDidMount(){
+    $.ajax({
+      url: "http://localhost:8080/api/autores",
+      dataType: 'json',
+      sucess: function(resposta) {
+        this.setState({ lista: resposta })
+      }.bind(this)
+    })
   }
   render() {
     return (
