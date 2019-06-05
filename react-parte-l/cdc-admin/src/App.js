@@ -10,16 +10,19 @@ class App extends Component {
     this.state = {lista: []}
   }
 
-  componentDidMount(){
+  componentWillMount(){
+    console.log("WillMount")
     $.ajax({
-      url: "http://localhost:8080/api/autores",
+      url: "https://cdc-react.herokuapp.com/api/autores",
       dataType: 'json',
-      sucess: function(resposta) {
-        this.setState({ lista: resposta })
+      success: function(resposta) {
+        console.log("Chegou a resposta!")
+        this.setState({ lista: resposta });
       }.bind(this)
     })
   }
   render() {
+    console.log("render")
     return (
           <div id="layout">
             <a href="#menu" id="menuLink" className="menu-link">    
