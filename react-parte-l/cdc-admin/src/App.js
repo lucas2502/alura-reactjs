@@ -43,9 +43,10 @@ class App extends Component {
       }),
       sucess: function(res){
         console.log('enviado com sucesso')
-      },
+        this.setState({lista: res})
+      }.bind(this),
       error: function(res){
-        console.log('error')
+        console.log('error', res)
       }
     })
   }
